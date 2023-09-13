@@ -31,10 +31,11 @@ const Logo = styled.img`
 const Title = styled.div`
     color: #2F394B;
     text-align: center;
+    font-family: Poppins;
     font-size: 37px;
     font-style: normal;
-    font-weight: 700;
-    ine-height: 45px; 
+    font-weight: 600;
+    line-height: 45px; 
     letter-spacing: -0.8px;
     margin-top: 10px;
 `;
@@ -43,10 +44,10 @@ const Desc = styled.div`
     width: 295px;
     color: #8D8D8D;
     text-align: center;
-    font-family: Product Sans;
+    font-family: Poppins;
     font-size: 14px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 24px;
     margin-top: 10px;
 `;
@@ -57,9 +58,9 @@ const BtnContainer = styled.div`
     margin-top: 42px;
 `;
 
-const Btnshadow = styled.div`
+const BtnShadow = styled.div`
     position: absolute;
-    top: 0px;
+    top: 8px;
     left: 0px;
     width: calc(100% - 130px);
     height: 60px;
@@ -92,13 +93,13 @@ const StartButton = styled.button`
     border: none;
     padding: 0px;
 
-    
     &:active{
         background: #5945FB;
     }
 `;
 
 const start = () => {
+
     return (
         <Start>
             <BottomModal>
@@ -110,8 +111,8 @@ const start = () => {
                     Create a unique emotional story that describes better than words
                 </Desc>
                 <BtnContainer>
-                    <Btnshadow />
-                    <StartButton onClick={() => { console.log('cl') }}>
+                    <BtnShadow />
+                    <StartButton onClick={() => { }}>
                         Get Started
                     </StartButton>
                 </BtnContainer>
