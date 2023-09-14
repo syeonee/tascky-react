@@ -7,6 +7,7 @@ import Start from './pages/Start';
 import Onboarding from './pages/Onboarding';
 import Home from './pages/Home';
 import Sign from './pages/Sign';
+import TabNavigator from "./components/TabNavigator";
 
 export const TaskcySignedInContext = React.createContext();
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/sign" element={<Sign />} />
         </Routes>
+        {isSignedIn && <TabNavigator />}
       </div>
     </TaskcySignedInContext.Provider>
   );
