@@ -28,15 +28,15 @@ const onboardItemList = [
 ]
 
 const slideNextAnimation = keyframes`
-0% {
-  opacity: 1;
-  transform: translateX(0vw);
-}
+    0% {
+    opacity: 1;
+    transform: translateX(0vw);
+    }
 
-100%{
-  opacity: 1;
-  transform: translateX(-100vw);
-}
+    100% {
+        opacity: 1;
+        transform: translateX(-100vw);
+    }
 `;
 
 const Onboard = styled.div`
@@ -53,7 +53,6 @@ const OnePageOnboardItem = styled(OnboardItem)`
     &.slide-next {
         visibility: hidden; 
     }
-
 `;
 
 const SlideContainer = styled.div`
@@ -63,7 +62,6 @@ const SlideContainer = styled.div`
     position: relative;
     left: -100vw;
     visibility: hidden;  
-    
     z-index: 3;
 
     &.slide-next {
@@ -71,7 +69,6 @@ const SlideContainer = styled.div`
         animation: ${slideNextAnimation} 2s forwards;
         animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000); 
     }
-
 `;
 
 const SliderButtons = styled.div`
@@ -113,6 +110,7 @@ const SkipButton = styled.button`
     border: none;
     padding: 0;
     background-color: transparent;
+    cursor: pointer;
 `;
 
 const BottomBgImg = styled.img`
@@ -134,12 +132,11 @@ const NextButton = styled.button`
     align-items: center;
     border: none;
     padding: 0;
+    background-image: url(${process.env.PUBLIC_URL + 'assets/images/next-button.png'});
     background-color: transparent;
-`;
-
-const NextImg = styled.img`
-    width: 100%;
-    height: 100%;
+    background-repeat: no-repeat;
+    background-size : cover;
+    cursor: pointer;
 `;
 
 const Onboarding = () => {
@@ -192,7 +189,7 @@ const Onboarding = () => {
         }
 
         if (!status.swipe && ((page % 3) === 2)) {
-            navigate("/main");
+            navigate("/sign");
         }
 
     };
@@ -213,9 +210,7 @@ const Onboarding = () => {
             <SkipButton>
                 Skip
             </SkipButton>
-            <NextButton onClick={handleSwipe} >
-                <NextImg src={`${process.env.PUBLIC_URL + 'assets/images/next-button.png'}`} alt="next button" />
-            </NextButton>
+            <NextButton onClick={handleSwipe} />
             <BottomBgImg src={`${process.env.PUBLIC_URL + 'assets/images/onboard-bottom-background.png'}`} alt="bg img" />
         </Onboard>
     );
