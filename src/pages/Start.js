@@ -31,9 +31,7 @@ const Logo = styled.img`
 const Title = styled.div`
     color: #2F394B;
     text-align: center;
-    font-family: Poppins;
     font-size: 37px;
-    font-style: normal;
     font-weight: 600;
     line-height: 45px; 
     letter-spacing: -0.8px;
@@ -44,9 +42,6 @@ const Desc = styled.div`
     width: 295px;
     color: #8D8D8D;
     text-align: center;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 24px;
     margin-top: 10px;

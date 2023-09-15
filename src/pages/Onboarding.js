@@ -101,9 +101,6 @@ const SliderButton = styled.button`
 const SkipButton = styled.button`
     color: #002055;
     text-align: center;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 24px; 
     margin: 52px 0px 0px 30px;
