@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
-import "./Fonts/Font.css";
+import "./Fonts/font.css";
 import Start from './pages/Start';
 import Onboarding from './pages/Onboarding';
 import Home from './pages/Home';

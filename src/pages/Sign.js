@@ -5,9 +5,7 @@ import { TaskcySignedInContext } from '../App'
 
 const BarTitle = styled.div`
     color: #002055;
-    font-family: Poppins;
     font-size: 18px;
-    font-style: normal;
     font-weight: 500;
     line-height: 18px; 
     text-align: center;
@@ -31,9 +29,7 @@ const BackButton = styled.button`
 
 const Title = styled.div`
     color: #002055;
-    font-family: Poppins;
     font-size: 25px;
-    font-style: normal;
     font-weight: 600;
     line-height: 25px; 
     margin: 52px 0 0 24px;
@@ -42,9 +38,6 @@ const Title = styled.div`
 const Desc = styled.div`
     width: 249px;
     color: #868D95;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 24px;
     margin: 12px 0 10px 24px;
@@ -59,9 +52,7 @@ const SignInput = styled.input`
     margin: 30px 0 0 24px;
     padding: 0 20px 0 20px;
     color: #002055;
-    font-family: Poppins;
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
     line-height: 16px; 
 
@@ -78,11 +69,7 @@ const SignInput = styled.input`
 
 const FindPWButton = styled.button`
     color: #002055;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
     font-weight: 500;
-    line-height: 14px;
     border: none;
     padding: 0;
     margin: 16px 0 0 calc(100% - 149px);
@@ -121,9 +108,7 @@ const SignButton = styled.button`
     padding: 0px;
     color: #FFF;
     text-align: center;
-    font-family: Poppins;
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
     line-height: 16px;
     cursor: pointer;
@@ -136,11 +121,7 @@ const SignButton = styled.button`
 const SignText = styled.div`
     color: #868D95;
     text-align: center;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
     font-weight: 500;
-    line-height: 14px;
     margin-top: 31px;
 `;
 
@@ -168,20 +149,12 @@ const SocialSignButton = styled.button`
 const ChangeSignText = styled.div`
     color: #868D95;
     text-align: center;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 14px;  
+    font-weight: 400; 
 `;
 
 const ChagneSignButton = styled.button`
     color: #756EF3;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
     font-weight: 500;
-    line-height: 14px;
     margin: 10px auto;
     display: block;
     border: none;
