@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Navigator = styled.div`
     position: fixed;
@@ -24,7 +25,9 @@ const NavButton = styled.button`
     background-size : cover;
     cursor: pointer;
 
-
+    &.active {
+        background-image: url(${props => process.env.PUBLIC_URL + 'assets/images/active-' + props.page + '-tab.png'});
+    }
 `;
 
 const AddNavButton = styled.button`
@@ -42,15 +45,21 @@ const AddNavButton = styled.button`
 `;
 
 const TabNavigator = () => {
-    const [current, setCurrent] = useState("");
+    const navigate = useNavigate();
+    const [current, setCurrent] = useState("home");
+
+    const handleButton = (page) => {
+        setCurrent(page);
+        navigate(`/${page}`);
+    }
 
     return (
         <Navigator>
-            <NavButton page="home" />
-            <NavButton page="project" />
+            <NavButton className={current === "home" && "active"} page="home" onClick={() => handleButton("home")} />
+            <NavButton className={current === "calendar" && "active"} page="calendar" onClick={() => handleButton("calendar")} />
             <AddNavButton />
-            <NavButton page="chat" />
-            <NavButton page="profile" />
+            <NavButton className={current === "project" && "active"} page="project" onClick={() => handleButton("project")} />
+            <NavButton className={current === "profile" && "active"} page="profile" onClick={() => handleButton("profile")} />
         </Navigator>
     );
 };
