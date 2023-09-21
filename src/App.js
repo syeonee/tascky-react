@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from 'react-router-dom';
 
 import './App.css';
-import "./Fonts/font.css";
+import "./Fonts/Font.css";
 import Start from './pages/Start';
 import Onboarding from './pages/Onboarding';
 import Home from './pages/Home';
 import Sign from './pages/Sign';
 import TabNavigator from "./components/TabNavigator";
+import Calendar from "./pages/Calendar";
 
 export const TaskcySignedInContext = React.createContext();
 
@@ -25,8 +26,9 @@ function App() {
         <Routes>
           <Route path="/" element={isSignedIn ? <Home /> : <Start />} />
           <Route path="/onboarding" element={<Onboarding />} />
-          <Route path="/home" element={<Home />} />
           <Route path="/sign" element={<Sign />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/calendar" element={<Calendar />} />
         </Routes>
         {isSignedIn && <TabNavigator />}
       </div>
