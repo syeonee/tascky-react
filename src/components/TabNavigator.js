@@ -46,7 +46,7 @@ const AddNavButton = styled.button`
 
 const TabNavigator = () => {
     const navigate = useNavigate();
-    const [current, setCurrent] = useState("home");
+    const [current, setCurrent] = useState(window.location.pathname.substr(1));
 
     const handleButton = (page) => {
         setCurrent(page);

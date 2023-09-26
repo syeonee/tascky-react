@@ -4,14 +4,15 @@ const MonthCalendarContainer = styled.div`
     border-radius: 16px;
     border: 1px solid #E9F1FF;
     background: #FFF;
-    margin: 0 24px 0 24px;
+    margin: 10px 24px 0 24px;
+    padding: 0 10px 0 10px;
 `;
 
 const CalendarHeader = styled.div`
     display: flex;
     justify-content: space-between;
     height:24px;
-    margin: 30px 20px 22px 20px;
+    margin: 22px 10px 22px 10px;
 `;
 
 const MonthChangeButton = styled.button`
