@@ -1,4 +1,7 @@
+import { useState } from "react";
 import styled from "styled-components";
+
+import { getCalendarDateList, getMonthString } from '../util/date';
 
 const MonthCalendarContainer = styled.div`
     border-radius: 16px;
@@ -38,11 +41,13 @@ const CurrentMonthText = styled.div`
 const DateContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin-bottom: 8px;
 `;
 
 const DateItem = styled.div`
-    width: 30px;
+    position: relative;
+    flex-basis: 14.2%;
     height: 30px;
     color: #002055;
     text-align: center;
@@ -53,83 +58,73 @@ const DateItem = styled.div`
     &.not-current {
         color: #848A94;
     }
+
+    &.todo {
+        color: #756EF3;
+    }
+
+    &.red {
+        color: #FF1D1D;
+    }
+
+    &.blue {
+        color: #1D26FF;
+    }
+`;
+
+const Circle = styled.div`
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #756EF3;
+    border-radius: 50%;
 `;
 
 const MonthCalendar = () => {
     const today = new Date();
+    const [calendarDate, setCalendarDate] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
+    const dateList = getCalendarDateList(calendarDate);
 
-    const getDateList = (date = new Date()) => {
-        const currentYear = date.getFullYear();
-        const currentMonth = date.getMonth();
+    const handlePrevMonth = () => {
+        const curDate = new Date(calendarDate);
+        curDate.setMonth(curDate.getMonth() - 1);
+        setCalendarDate(curDate);
+    };
 
-        const prevMonthLast = new Date(currentYear, currentMonth, 0);
-        const currentMonthLast = new Date(currentYear, currentMonth + 1, 0);
-
-        const prevMonthLastDate = prevMonthLast.getDate();
-        const prevMonthLastDay = prevMonthLast.getDay();
-
-        const currentMonthLastDate = currentMonthLast.getDate();
-        const currentMonthLastDay = currentMonthLast.getDay();
-
-        const prevMonthDates = [];
-        const currentMonthDates = [...Array(currentMonthLastDate + 1).keys()].slice(1);
-        const nextMonthDates = [];
-
-        if (prevMonthLastDay !== 6) {
-            for (let i = 0; i < prevMonthLastDay + 1; i++) {
-                prevMonthDates.unshift(prevMonthLastDate - i);
-            }
-        }
-
-        if (currentMonthLastDay !== 6) {
-            for (let i = 1; i < 7 - currentMonthLastDay; i++) {
-                nextMonthDates.push(i);
-            }
-        }
-
-        const dates = {
-            prevMonthDates: prevMonthDates,
-            currentMonthDates: currentMonthDates,
-            nextMonthDates: nextMonthDates
-        }
-
-        return dates;
-
+    const handleNextMonth = () => {
+        const curDate = new Date(calendarDate);
+        curDate.setMonth(curDate.getMonth() + 1);
+        setCalendarDate(curDate);
     };
 
     return (
         <MonthCalendarContainer>
             <CalendarHeader>
-                <MonthChangeButton direction="prev" />
-                <CurrentMonthText>{"Sep 2021"}</CurrentMonthText>
-                <MonthChangeButton direction="next" />
+                <MonthChangeButton direction="prev" onClick={handlePrevMonth} />
+                <CurrentMonthText>{getMonthString(calendarDate)}</CurrentMonthText>
+                <MonthChangeButton direction="next" onClick={handleNextMonth} />
             </CalendarHeader>
             <DateContainer>
-                <DateItem className="not-current">S</DateItem>
+                <DateItem className="red">S</DateItem>
                 <DateItem className="not-current">M</DateItem>
                 <DateItem className="not-current">T</DateItem>
                 <DateItem className="not-current">W</DateItem>
                 <DateItem className="not-current">T</DateItem>
                 <DateItem className="not-current">F</DateItem>
-                <DateItem className="not-current">S</DateItem>
-            </DateContainer>
-            <DateContainer>
-                <DateItem>31</DateItem>
-                <DateItem>1</DateItem>
-                <DateItem>2</DateItem>
-                <DateItem>3</DateItem>
-                <DateItem>4</DateItem>
-                <DateItem>5</DateItem>
-                <DateItem>6</DateItem>
-            </DateContainer>
-            <DateContainer>
-                <DateItem>7</DateItem>
-                <DateItem>8</DateItem>
-                <DateItem>9</DateItem>
-                <DateItem>10</DateItem>
-                <DateItem>11</DateItem>
-                <DateItem>12</DateItem>
-                <DateItem>13</DateItem>
+                <DateItem className="blue">S</DateItem>
+
+                {dateList.prevMonthDates.map((item) =>
+                    <DateItem className="not-current" key={item} >{item}</DateItem>
+                )}
+                {dateList.currentMonthDates.map((item) =>
+                    <DateItem className="todo" key={item} >{item}<Circle /></DateItem>
+                )}
+                {dateList.nextMonthDates.map((item) =>
+                    <DateItem className="not-current" key={item} >{item}</DateItem>
+                )}
             </DateContainer>
 
         </MonthCalendarContainer>
