@@ -120,7 +120,7 @@ const MonthCalendar = () => {
                     <DateItem className="not-current" key={item} >{item}</DateItem>
                 )}
                 {dateList.currentMonthDates.map((item) =>
-                    <DateItem className="todo" key={item} >{item}<Circle /></DateItem>
+                    <DateItem className="todo" key={item} >{item}</DateItem>
                 )}
                 {dateList.nextMonthDates.map((item) =>
                     <DateItem className="not-current" key={item} >{item}</DateItem>

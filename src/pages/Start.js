@@ -1,7 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
 
-const Start = styled.div`
+const StartContainer = styled.div`
     background-color: #6652FF;
     background-image: url(${process.env.PUBLIC_URL}assets/images/welcom-background.png); 
     background-size: cover;
@@ -93,10 +94,16 @@ const StartButton = styled.button`
     }
 `;
 
-const start = () => {
+const Start = () => {
+    const navigate = useNavigate();
+
+    const handleStart = () => {
+
+        navigate('/onboarding', { replace: true });
+    };
 
     return (
-        <Start>
+        <StartContainer>
             <BottomModal>
                 <Logo src={`${process.env.PUBLIC_URL + 'assets/images/logo.png'}`} alt="logo" />
                 <Title>
@@ -107,13 +114,13 @@ const start = () => {
                 </Desc>
                 <BtnContainer>
                     <BtnShadow />
-                    <StartButton onClick={() => { }}>
+                    <StartButton onClick={handleStart}>
                         Get Started
                     </StartButton>
                 </BtnContainer>
             </BottomModal>
-        </Start>
+        </StartContainer>
     );
 };
 
-export default start;
+export default Start;

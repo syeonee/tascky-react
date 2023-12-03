@@ -57,7 +57,6 @@ const TabNavigator = () => {
         <Navigator>
             <NavButton className={current === "home" && "active"} page="home" onClick={() => handleButton("home")} />
             <NavButton className={current === "calendar" && "active"} page="calendar" onClick={() => handleButton("calendar")} />
-            <AddNavButton />
             <NavButton className={current === "project" && "active"} page="project" onClick={() => handleButton("project")} />
             <NavButton className={current === "profile" && "active"} page="profile" onClick={() => handleButton("profile")} />
         </Navigator>

@@ -6,15 +6,18 @@ import MonthCalendar from "../components/MonthCalendar";
 
 
 const Calendar = () => {
+    const selectedDate = new Date();
+    const todos = JSON.parse(localStorage.getItem('todo')) || [];
+
     return (
         <>
             <Header
-                leftBtnName="menu" leftOnclickHandle={() => { console.log("left button click"); }}
-                headText="Monday, 5"
-                rightBtnName="notification" rightOnclickHandle={() => { console.log("right button click"); }}
+                leftBtnName="back-button" leftBtnHandle={() => { console.log("left button click"); }}
+                headText="Calendar"
+                rightBtnName="add-task2" rightBtnHandle={() => { console.log("right button click"); }}
             />
             <MonthCalendar />
-            <TodayTaskInfo />
+            <TodayTaskInfo today={selectedDate} tasks={todos} />
         </>
     );
 }

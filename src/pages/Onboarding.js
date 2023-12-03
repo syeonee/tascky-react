@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { css, keyframes } from 'styled-components';
 import OnboardItem from "../components/OnboardItem";
+import { TaskcySignedInContext } from '../App'
 
 const onboardItemList = [
     {
@@ -142,6 +143,7 @@ const Onboarding = () => {
     const onboardItemRef = useRef();
     const containerRef = useRef();
 
+    const setIsSignedIn = useContext(TaskcySignedInContext);
     const [status, setStatus] = useState({
         page: 0,
         swipe: false
@@ -150,6 +152,10 @@ const Onboarding = () => {
 
     useEffect(() => {
         if (!onboardItemRef.current) return;
+
+        if (Boolean(setIsSignedIn[0]) === true) {
+            navigate('/', { replace: true });
+        }
 
         const callback = (entries) => {
             entries.forEach((entry) => {

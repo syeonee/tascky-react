@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import Line from "./Line"
+import { getMonthDayString } from '../util/date';
 
 const TodayDate = styled.div`
     color: #002055;
@@ -21,6 +22,11 @@ const TaskContainer = styled.div`
     height: 145px;
     border-radius: 10px;
     border: 1px solid #E9F1FF;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `;
 
 const Task = styled.div`
@@ -36,19 +42,18 @@ const TaskDot = styled.img`
     content:url(${process.env.PUBLIC_URL + 'assets/images/task-dot.png'});
 `;
 
-const TodayTaskInfo = () => {
+const TodayTaskInfo = ({ today, tasks }) => {
     return (
         <>
-            <TodayDate>October, 20  ✍</TodayDate>
+            <TodayDate>{getMonthDayString(today)}  ✍</TodayDate>
             <TodayText>Today’s Task</TodayText>
             <TaskContainer>
-                <Task><TaskDot />To do develop</Task>
-                <Line margin="10" />
-                <Task><TaskDot />To do develop</Task>
-                <Line margin="10" />
-                <Task><TaskDot />To do develop</Task>
-                <Line margin="10" />
-                <Task />
+                {tasks.map((task) =>
+                    <>
+                        <Task><TaskDot />{task.name}</Task>
+                        <Line margin="10" />
+                    </>
+                )}
             </TaskContainer>
 
         </>

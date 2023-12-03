@@ -41,5 +41,24 @@ export const getCalendarDateList = (date) => {
 export const getMonthString = (date) => {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    return `${months[date.getMonth()]} ${date.getFullYear()}`
+    return `${months[date.getMonth()]} ${date.getFullYear()}`;
+}
+
+export const getMonthDayString = (date) => {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    return `${date.getDate()} ${months[date.getMonth()]}`;
+}
+
+export const getTimeString = (time) => {
+    const date = new Date(time);
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? (hours < 10 ? '0' + hours : hours) : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+
+    return strTime;
 }
