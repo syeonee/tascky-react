@@ -222,11 +222,11 @@ const Sign = () => {
     return (
         <>
             <BarTitle>{isSignInPage ? "Sign In" : "Sign Up"}</BarTitle>
-            <BackButton />
+            <BackButton onClick={() => navigate(-1)} />
             <Title ref={testRef}>{isSignInPage ? "Welcome Back" : "Create Account"}</Title>
             <Desc>
                 {isSignInPage
-                    ? "Please Inter your email address and password for Login"
+                    ? "Please Inter your email address and password for Login 아무거나 입력하셔도 로그인 됩니다."
                     : "Please Inter your Informatioin and create your account"
                 }
             </Desc>
